@@ -30,9 +30,8 @@ interface CursorProps {
 
 const navigationItems: NavItem[] = [
   { label: "⚡️Buildooor", path: "/" },
-  { label: "Send", path: "/send" },
-  { label: "Receive", path: "/receive" },
-  { label: "Provider", path: "/provider" },
+  { label: "Discover", path: "/send" },
+  { label: "Profile", path: "/receive" },
 ];
 
 const Tab: React.FC<TabProps> = ({
