@@ -5,7 +5,11 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { MoveRight } from "lucide-react";
-import { getPassportsByScore } from "@/utils/api-helpers";
+import {
+  getCredentials,
+  getPassportById,
+  getPassportsByScore,
+} from "@/utils/api-helpers";
 
 const StartMeeting = () => {
   return (
@@ -25,7 +29,11 @@ export default function Home() {
   const ref = useRef(null);
 
   useEffect(() => {
-    getPassportsByScore();
+    getPassportById("0x7f50726fF84Cb4f04fC887e110EdD6CEBC14BdDa");
+    // getPassportsByScore();
+    getCredentials({
+      passport_id: "0x7f50726fF84Cb4f04fC887e110EdD6CEBC14BdDa",
+    });
   }, []);
 
   return (
