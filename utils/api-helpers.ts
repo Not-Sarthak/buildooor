@@ -7,7 +7,12 @@ export const axiosBase = axios.create({
   },
 });
 
-export async function getPassportsByScore() {
+export async function getPassportsByScore(): Promise<TTalentData> {
   const response = await axiosBase.get("/");
-  return response.data;
+
+  const data = response.data;
+
+  console.log(data);
+
+  return data;
 }

@@ -1,10 +1,11 @@
 "use client";
 
 import { whyte } from "@/app/fonts/font";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { MoveRight } from "lucide-react";
+import { getPassportsByScore } from "@/utils/api-helpers";
 
 const StartMeeting = () => {
   return (
@@ -22,6 +23,10 @@ const MotionImage = motion(Image);
 
 export default function Home() {
   const ref = useRef(null);
+
+  useEffect(() => {
+    getPassportsByScore();
+  }, []);
 
   return (
     <main className="md:w-full w-fit min-h-screen pt-16 md:px-0 px-4">
