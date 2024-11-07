@@ -75,7 +75,7 @@ export default function Discover() {
 
   if (loading && builders.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#272A48] to-[#0F0E26] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="space-y-4 text-center">
           <div className="w-80 h-40 bg-gradient-to-br from-[#272A48] to-[#0F0E26] rounded-xl overflow-hidden relative animate-pulse">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
@@ -102,7 +102,7 @@ export default function Discover() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#272A48] to-[#0F0E26] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -123,7 +123,7 @@ export default function Discover() {
   }
 
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-[#272A48] to-[#0F0E26] pt-16 px-4">
+    <main className="relative min-h-screen pt-16 px-4">
       <div
         className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-10 z-0"
         style={{ backgroundImage: "url('/bg.svg')" }}
