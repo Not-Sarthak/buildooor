@@ -14,7 +14,8 @@
     "lint:unsafe": "biome lint --write --unsafe .",
     "start": "next start",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "postinstall": "pnpx prisma generate"
   },
   "dependencies": {
     "@coinbase/onchainkit": "^0.35.2",
