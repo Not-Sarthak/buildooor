@@ -1,5 +1,3 @@
-/* Get All Passport by Score API */
-
 type PassportProfile = {
   bio: string | null;
   display_name: string | null;
@@ -21,7 +19,6 @@ type Passport = {
   score: number | null;
   passport_profile: PassportProfile;
   verified_wallets: string[];
-
   verified: boolean;
   created_at: string;
   main_wallet_changed_at: string | null;
@@ -32,12 +29,10 @@ type TTalentPassportListResponse = {
   passports: Passport[];
   pagination: {
     current_page: number;
-    laTst_page: number;
+    last_page: number;
     total: number;
   };
 };
-
-/* Get ALl Passport by Score API */
 
 type TTalentPassportResponse = {
   passport: Passport;
@@ -84,31 +79,14 @@ type PassportCredentialType =
   | "yellow_collective";
 
 interface PassportCredential {
-  /** The timestamp of when the passport credential was earned */
   earned_at: string | null;
-
-  /** The id of the passport credential */
   id: string;
-
-  /** The category of the credential */
   category: PassportCredentialCategory;
-
-  /** The last time the passport credential was calculated */
   last_calculated_at: string | null;
-
-  /** The max score of the passport credential */
   max_score: number;
-
-  /** The name of the passport credential */
   name: string;
-
-  /** The score of the passport credential */
   score: number;
-
-  /** The type of the passport credential */
   type: PassportCredentialType;
-
-  /** The value of the passport credential */
   value: string | null;
 }
 

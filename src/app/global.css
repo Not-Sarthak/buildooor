@@ -61,7 +61,7 @@ body:after {
     ),
     radial-gradient(
       circle at top center,
-      hsla(235, 75%, 60%, 0.3) 0%,
+      hwb(235 30% 10% / 0.3) 0%,
       hsla(275, 0%, 0%, 0.3) 100%
     );
 }
