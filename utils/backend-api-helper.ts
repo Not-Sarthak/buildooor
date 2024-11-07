@@ -40,6 +40,7 @@ export async function getUserMatches({ id }: { id: string }): Promise<
   return result;
 }
 
+/* Get messages for a match */
 export async function getMatchMessages({
   matchId,
 }: {
@@ -52,6 +53,7 @@ export async function getMatchMessages({
   return result;
 }
 
+/* Send message to a match */
 export async function sendMessage({
   matchId,
   senderId,
@@ -69,4 +71,36 @@ export async function sendMessage({
   const result = response.data as Message;
 
   return result;
+}
+
+/* Get swipe history */
+export async function getSwipeHistory({
+  userId,
+}: {
+  userId: string;
+}): Promise<Swipe[]> {
+  const response = await axiosBaseBackend.post(
+    `/swipes/history?userId=${userId}`
+  );
+
+  const result = response.data as Swipe[];
+
+  return result;
+}
+
+/* Get IDs user has already swiped */
+export async function swipedUserIds({
+  userId,
+}: {
+  userId: string;
+}): Promise<string[]> {
+  const response = await axiosBaseBackend.post(
+    `/recommendations?userId=${userId}`
+  );
+
+  const result = response.data as {
+    swipedUserIds: string[];
+  };
+
+  return result.swipedUserIds;
 }
