@@ -2,6 +2,7 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/* Get a list of users */
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -45,6 +46,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/* Create a user */
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();

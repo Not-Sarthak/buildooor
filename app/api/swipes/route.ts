@@ -1,6 +1,7 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/* Swipe method */
 export async function POST(request: NextRequest) {
   try {
     const { swiperId, swipedId, isLike } = await request.json();

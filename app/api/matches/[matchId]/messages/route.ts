@@ -1,6 +1,7 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/* Messages for a match */
 export async function GET(
   request: NextRequest,
   { params }: { params: { matchId: string } }

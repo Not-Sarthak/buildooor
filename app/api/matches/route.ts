@@ -2,6 +2,7 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/* Get a list of matches */
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;

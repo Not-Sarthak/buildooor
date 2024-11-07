@@ -2,6 +2,7 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/* Get a user by ID */
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
