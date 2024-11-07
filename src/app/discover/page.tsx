@@ -25,15 +25,6 @@ interface Passport {
   };
 }
 
-const cardVariants = {
-  enter: { scale: 0.95, opacity: 0 },
-  center: { scale: 1, opacity: 1 },
-  exit: {
-    scale: 0.95,
-    transition: { duration: 0.2 },
-  },
-};
-
 const emptyStateVariants = {
   enter: { opacity: 0, scale: 0.9 },
   center: { opacity: 1, scale: 1 },

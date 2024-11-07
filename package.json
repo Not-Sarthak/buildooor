@@ -20,6 +20,7 @@
     "@coinbase/onchainkit": "^0.35.2",
     "@prisma/client": "^5.22.0",
     "axios": "^1.7.7",
+    "ethers": "^6.13.4",
     "framer-motion": "^11.11.11",
     "lucide": "^0.447.0",
     "lucide-react": "^0.447.0",
