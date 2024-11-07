@@ -63,12 +63,12 @@ export default function Discover() {
     const { match, swipe } = await swipeUser({
       swiperId: "0x8Bc655575d98B9Fd98A0Fc1A71d5E12035E9c0b1",
       swipedId: "0x7f50726fF84Cb4f04fC887e110EdD6CEBC14BdDa",
-      isLike: true,
+      isLike: direction === "right",
     });
 
     if (match) {
       console.log("It's a match!", match);
-      router.push(`/collaborators?matchId=${match.id}`);
+      window.open(`/collaborators?matchId=${match.id}`, "_blank");
     }
 
     // await new Promise((resolve) => setTimeout(resolve, 500));

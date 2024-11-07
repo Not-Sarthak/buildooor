@@ -42,24 +42,6 @@ const Collab = () => {
       senderId: match.user1Id,
       timestamp: new Date().toISOString(),
     },
-    {
-      id: 2,
-      content: "I'm good, thanks! How about you?",
-      senderId: match.user2Id,
-      timestamp: new Date().toISOString(),
-    },
-    {
-      id: 3,
-      content: "Working on some interesting projects lately",
-      senderId: match.user1Id,
-      timestamp: new Date().toISOString(),
-    },
-    {
-      id: 4,
-      content: "That sounds great! Would love to hear more about it.",
-      senderId: match.user2Id,
-      timestamp: new Date().toISOString(),
-    },
   ];
 
   const handleSendMessage = (e: React.FormEvent) => {
