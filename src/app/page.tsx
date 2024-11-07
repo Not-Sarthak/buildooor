@@ -43,53 +43,53 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full flex justify-center items-center" ref={ref}>
-              <MotionImage
-                initial={{ opacity: 0, y: 50, rotate: 0, scale: 0 }}
-                animate={{ opacity: 1, y: 0, rotate: -6, scale: 1 }}
-                transition={{
-                  rotate: {
-                    delay: 1,
-                  },
-                }}
-                className="absolute -translate-x-16 origin-bottom"
-                src="/landing/dev.png"
-                alt="Sprint"
-                width={100}
-                height={100}
-                quality={100}
-              />
-              <MotionImage
-                initial={{ opacity: 0, y: 50, rotate: 0, scale: 0 }}
-                animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
-                transition={{
-                  rotate: {
-                    delay: 1,
-                    duration: 1,
-                  },
-                }}
-                className="absolute origin-bottom"
-                src="/landing/rocket.png"
-                alt="Sprint"
-                width={100}
-                height={100}
-                quality={100}
-              />
-              <MotionImage
-                initial={{ opacity: 0, y: 50, rotate: 0, scale: 0 }}
-                animate={{ opacity: 1, y: 0, rotate: 6, scale: 1 }}
-                transition={{
-                  rotate: {
-                    delay: 1,
-                  },
-                }}
-                className="absolute translate-x-16 origin-bottom"
-                src="/landing/trophy.png"
-                alt="Sprint"
-                width={100}
-                height={100}
-                quality={100}
-              />
-            </div>
+          <MotionImage
+            initial={{ opacity: 0, y: 50, rotate: 0, scale: 0 }}
+            animate={{ opacity: 1, y: 0, rotate: -6, scale: 1 }}
+            transition={{
+              rotate: {
+                delay: 1,
+              },
+            }}
+            className="absolute -translate-x-16 origin-bottom"
+            src="/landing/dev.png"
+            alt="Sprint"
+            width={100}
+            height={100}
+            quality={100}
+          />
+          <MotionImage
+            initial={{ opacity: 0, y: 50, rotate: 0, scale: 0 }}
+            animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+            transition={{
+              rotate: {
+                delay: 1,
+                duration: 1,
+              },
+            }}
+            className="absolute origin-bottom"
+            src="/landing/rocket.png"
+            alt="Sprint"
+            width={100}
+            height={100}
+            quality={100}
+          />
+          <MotionImage
+            initial={{ opacity: 0, y: 50, rotate: 0, scale: 0 }}
+            animate={{ opacity: 1, y: 0, rotate: 6, scale: 1 }}
+            transition={{
+              rotate: {
+                delay: 1,
+              },
+            }}
+            className="absolute translate-x-16 origin-bottom"
+            src="/landing/trophy.png"
+            alt="Sprint"
+            width={100}
+            height={100}
+            quality={100}
+          />
+        </div>
         <div className="text-center">
           <h1 className="text-3xl text-gray-300 mt-16">
             Find Your Perfect Build{" "}
