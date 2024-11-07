@@ -48,7 +48,8 @@ export async function POST(request: NextRequest) {
           return { swipe, match };
         }
       }
-      return { swipe };
+
+      return { swipe, match: null };
     });
 
     return NextResponse.json(result, { status: 201 });
