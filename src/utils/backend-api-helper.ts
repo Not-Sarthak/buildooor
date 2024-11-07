@@ -31,7 +31,7 @@ export async function getUserMatches({ id }: { id: string }): Promise<
     messages: Message[];
   })[]
 > {
-  const response = await axiosBaseBackend.post(`/matches/userId=${id}`);
+  const response = await axiosBaseBackend.get(`/matches?userId=${id}`);
 
   const result = response.data as (Match & {
     messages: Message[];

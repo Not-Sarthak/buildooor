@@ -7,6 +7,7 @@ import { getPassportsByScore } from "../../utils/api-helpers";
 import { whyte } from "../fonts/font";
 import { BuilderCard } from "src/components/cards/builder-card";
 import { swipeUser } from "src/utils/backend-api-helper";
+import { useRouter } from "next/navigation";
 
 interface Passport {
   activity_score: number;
@@ -37,6 +38,7 @@ export default function Discover() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     loadBuilders();
@@ -58,12 +60,18 @@ export default function Discover() {
   };
 
   const handleSwipe = async (direction: "left" | "right") => {
-    // swipeUser({
-    //   swiperId: "0x8Bc655575d98B9Fd98A0Fc1A71d5E12035E9c0b1",
-    //   swipedId: "0x7f50726fF84Cb4f04fC887e110EdD6CEBC14BdDa",
-    //   isLike: true,
-    // });
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const { match, swipe } = await swipeUser({
+      swiperId: "0x8Bc655575d98B9Fd98A0Fc1A71d5E12035E9c0b1",
+      swipedId: "0x7f50726fF84Cb4f04fC887e110EdD6CEBC14BdDa",
+      isLike: true,
+    });
+
+    if (match) {
+      console.log("It's a match!", match);
+      router.push(`/collaborators?matchId=${match.id}`);
+    }
+
+    // await new Promise((resolve) => setTimeout(resolve, 500));
     setBuilders((prev) => prev.slice(1));
     if (builders.length < 3) {
       setCurrentPage((prev) => prev + 1);
