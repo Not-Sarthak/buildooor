@@ -8,6 +8,7 @@ import { whyte } from "../fonts/font";
 import { BuilderCard } from "src/components/cards/builder-card";
 import { swipeUser } from "src/utils/backend-api-helper";
 import { useRouter } from "next/navigation";
+import { useAccount } from "wagmi";
 
 interface Passport {
   activity_score: number;
@@ -40,6 +41,9 @@ export default function Discover() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
+  const account = useAccount();
+  console.log(account);
+
   useEffect(() => {
     loadBuilders();
   }, [currentPage]);
@@ -60,9 +64,10 @@ export default function Discover() {
   };
 
   const handleSwipe = async (direction: "left" | "right") => {
+    // TODO: Test
     const { match, swipe } = await swipeUser({
-      swiperId: "0x8Bc655575d98B9Fd98A0Fc1A71d5E12035E9c0b1",
-      swipedId: "0x7f50726fF84Cb4f04fC887e110EdD6CEBC14BdDa",
+      swiperId: account.address!,
+      swipedId: builders[currentPage].main_wallet,
       isLike: direction === "right",
     });
 

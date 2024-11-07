@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getUserMatches } from "src/utils/backend-api-helper";
 import { Send } from "lucide-react";
+import { useAccount } from "wagmi";
 
 const Collab = () => {
   const [searchParams] = useSearchParams();
@@ -11,12 +12,16 @@ const Collab = () => {
     null
   );
   const [newMessage, setNewMessage] = useState("");
+  const account = useAccount();
 
   async function loadMatch() {
     const searchParams = new URLSearchParams(window.location.search);
+
+    // TODO: Test
     const matchs = await getUserMatches({
-      id: "0x8Bc655575d98B9Fd98A0Fc1A71d5E12035E9c0b1",
+      id: account.address!,
     });
+
     setMatch(
       matchs.find((match) => match.id === searchParams.get("matchId")) ?? null
     );
