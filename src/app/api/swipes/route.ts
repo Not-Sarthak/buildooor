@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Process swipe and potential match in a transaction
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const swipe = await tx.swipe.create({
         data: {
           swiperId,
