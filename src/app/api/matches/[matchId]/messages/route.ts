@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "../../../../../utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 /* Messages for a match */

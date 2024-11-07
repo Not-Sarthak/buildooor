@@ -1,5 +1,4 @@
-// app/api/matches/route.ts
-import { prisma } from "@/utils/prisma";
+import { prisma } from "../../../utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 /* Get a list of matches */
