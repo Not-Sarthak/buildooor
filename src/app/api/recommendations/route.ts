@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    const swipedUserIds = swipedIds.map((swipe) => swipe.swipedId);
+    const swipedUserIds = swipedIds.map((swipe: any) => swipe.swipedId);
 
     // TODO: Return the IDs that haven't been swiped yet
     // The actual user data will be fetched from Talent Protocol on the frontend
