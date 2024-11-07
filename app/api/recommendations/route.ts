@@ -2,49 +2,35 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+/* Get a list of recommendations
+ * Ruturns IDs swiped by the user
+ */
 export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const userId = searchParams.get("userId");
+
+  if (!userId) {
+    return NextResponse.json({ error: "userId is required" }, { status: 400 });
+  }
+
   try {
-    const searchParams = request.nextUrl.searchParams;
-    const userId = searchParams.get("userId");
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: "userId is required" },
-        { status: 400 }
-      );
-    }
-
-    // Get users that haven't been swiped by the current user
-    const recommendations = await prisma.user.findMany({
+    // Get IDs of users that haven't been swiped by the current user
+    const swipedIds = await prisma.swipe.findMany({
       where: {
-        AND: [
-          { id: { not: userId } },
-          {
-            NOT: {
-              swipesReceived: {
-                some: {
-                  swiperId: userId,
-                },
-              },
-            },
-          },
-        ],
+        swiperId: userId,
       },
       select: {
-        id: true,
-        name: true,
-        bio: true,
-        skills: true,
-        builderScore: true,
-        avatarUrl: true,
-      },
-      take: 10,
-      orderBy: {
-        builderScore: "desc",
+        swipedId: true,
       },
     });
 
-    return NextResponse.json(recommendations);
+    const swipedUserIds = swipedIds.map((swipe) => swipe.swipedId);
+
+    // TODO: Return the IDs that haven't been swiped yet
+    // The actual user data will be fetched from Talent Protocol on the frontend
+    return NextResponse.json({
+      swipedUserIds,
+    });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch recommendations" },

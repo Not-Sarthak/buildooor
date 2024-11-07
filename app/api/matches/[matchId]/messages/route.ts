@@ -11,15 +11,6 @@ export async function GET(
       where: {
         matchId: params.matchId,
       },
-      include: {
-        sender: {
-          select: {
-            id: true,
-            name: true,
-            avatarUrl: true,
-          },
-        },
-      },
       orderBy: {
         createdAt: "asc",
       },
@@ -33,6 +24,7 @@ export async function GET(
   }
 }
 
+/* Send message to a match */
 export async function POST(
   request: NextRequest,
   { params }: { params: { matchId: string } }
@@ -60,14 +52,6 @@ export async function POST(
         matchId: params.matchId,
         senderId,
         content,
-      },
-      include: {
-        sender: {
-          select: {
-            name: true,
-            avatarUrl: true,
-          },
-        },
       },
     });
 

@@ -1,8 +1,7 @@
-// app/api/matches/route.ts
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-/* Get a list of matches */
+/** Swipe History */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const userId = searchParams.get("userId");
@@ -12,27 +11,19 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const matches = await prisma.match.findMany({
+    const swipes = await prisma.swipe.findMany({
       where: {
-        OR: [{ user1Id: userId }, { user2Id: userId }],
-      },
-      include: {
-        messages: {
-          take: 1,
-          orderBy: {
-            createdAt: "desc",
-          },
-        },
+        swiperId: userId,
       },
       orderBy: {
         createdAt: "desc",
       },
     });
 
-    return NextResponse.json(matches);
+    return NextResponse.json(swipes);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch matches" },
+      { error: "Failed to fetch swipe history" },
       { status: 500 }
     );
   }

@@ -13,49 +13,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           String   @id @default(cuid())
-  talentId     String   @unique // ID from Talent Protocol
-  name         String
-  bio          String?
-  skills       String[]
-  builderScore Float
-  avatarUrl    String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  // Swipes made by this user
-  swipesMade     Swipe[] @relation("SwipingUser")
-  // Swipes received by this user
-  swipesReceived Swipe[] @relation("SwipedUser")
-
-  // Matches where this user is user1
-  matchesAsUser1 Match[] @relation("MatchUser1")
-  // Matches where this user is user2
-  matchesAsUser2 Match[] @relation("MatchUser2")
-
-  // Messages sent by this user
-  messagesSent Message[] @relation("MessageSender")
-}
-
 model Swipe {
-  id          String   @id @default(cuid())
-  swipingUser User     @relation("SwipingUser", fields: [swiperId], references: [id])
-  swiperId    String
-  swipedUser  User     @relation("SwipedUser", fields: [swipedId], references: [id])
-  swipedId    String
-  isLike      Boolean // true for right swipe, false for left swipe
-  createdAt   DateTime @default(now())
+  id        String   @id @default(cuid())
+  swiperId  String // Talent Protocol User ID
+  swipedId  String // Talent Protocol User ID
+  isLike    Boolean // true for right swipe, false for left swipe
+  createdAt DateTime @default(now())
 
   @@unique([swiperId, swipedId])
 }
 
 model Match {
   id        String    @id @default(cuid())
-  user1     User      @relation("MatchUser1", fields: [user1Id], references: [id])
-  user1Id   String
-  user2     User      @relation("MatchUser2", fields: [user2Id], references: [id])
-  user2Id   String
+  user1Id   String // Talent Protocol User ID
+  user2Id   String // Talent Protocol User ID
   createdAt DateTime  @default(now())
   messages  Message[]
 
@@ -66,8 +37,7 @@ model Message {
   id        String   @id @default(cuid())
   match     Match    @relation(fields: [matchId], references: [id])
   matchId   String
-  sender    User     @relation("MessageSender", fields: [senderId], references: [id])
-  senderId  String
+  senderId  String // Talent Protocol User ID
   content   String
   createdAt DateTime @default(now())
 }
