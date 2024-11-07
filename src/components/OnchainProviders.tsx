@@ -21,7 +21,7 @@ function OnchainProviders({ children }: Props) {
         <OnchainKitProvider apiKey={NEXT_PUBLIC_CDP_API_KEY} chain={base}
          config={{
           appearance: {
-            mode: 'auto',
+            mode: 'auto', 
             theme: 'base', 
           },
         }}>
