@@ -7,9 +7,9 @@ Find with it live on https://buildooor-sand.vercel.app/
 <br />
 
 ## Tech-Stack
-Frontend: NextJS, TypeScript, Tailwind
-Backend: Prisma, PostgreSQL
-On-Chain: On-Chain Kit, Coinbase Developer Platform, Talent Protocol
+Frontend: NextJS, TypeScript, Tailwind <br />
+Backend: Prisma, PostgreSQL <br />
+On-Chain: On-Chain Kit, Coinbase Developer Platform, Talent Protocol <br />
 
 ## License
 
